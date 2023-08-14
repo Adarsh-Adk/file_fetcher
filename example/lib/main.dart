@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:file_fetcher/file_fetcher.dart';
-import 'package:file_fetcher/models/file_property.dart';
 import 'package:flutter/material.dart';
 
 void main() {
