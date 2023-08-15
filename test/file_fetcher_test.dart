@@ -1,6 +1,6 @@
 import 'package:file_fetcher/file_fetcher.dart';
-import 'package:file_fetcher/file_fetcher_method_channel.dart';
-import 'package:file_fetcher/file_fetcher_platform_interface.dart';
+import 'package:file_fetcher/src/file_fetcher_method_channel.dart';
+import 'package:file_fetcher/src/file_fetcher_platform_interface.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 

@@ -1,4 +1,4 @@
-import 'package:file_fetcher/file_fetcher_method_channel.dart';
+import 'package:file_fetcher/src/file_fetcher_method_channel.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 

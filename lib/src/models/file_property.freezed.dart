@@ -20,12 +20,29 @@ FileProperty _$FilePropertyFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FileProperty {
+  ///path to the file
   String? get path => throw _privateConstructorUsedError;
+
+  ///name of the file
   String? get name => throw _privateConstructorUsedError;
+
+  ///id of the file
   int? get id => throw _privateConstructorUsedError;
+
+  ///mime type of the file
   String? get mimeType => throw _privateConstructorUsedError;
+
+  ///added date of the file
   int? get dateAdded => throw _privateConstructorUsedError;
+
+  ///File size in bytes
   int? get size => throw _privateConstructorUsedError;
+
+  ///returns data for thumbnail in List<int> please convert to Uint8list and use with Image.fromMemory
+  List<int>? get bitMap => throw _privateConstructorUsedError;
+
+  ///returns the extension of file
+  String? get extension => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +62,9 @@ abstract class $FilePropertyCopyWith<$Res> {
       int? id,
       String? mimeType,
       int? dateAdded,
-      int? size});
+      int? size,
+      List<int>? bitMap,
+      String? extension});
 }
 
 /// @nodoc
@@ -67,6 +86,8 @@ class _$FilePropertyCopyWithImpl<$Res, $Val extends FileProperty>
     Object? mimeType = freezed,
     Object? dateAdded = freezed,
     Object? size = freezed,
+    Object? bitMap = freezed,
+    Object? extension = freezed,
   }) {
     return _then(_value.copyWith(
       path: freezed == path
@@ -93,6 +114,14 @@ class _$FilePropertyCopyWithImpl<$Res, $Val extends FileProperty>
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as int?,
+      bitMap: freezed == bitMap
+          ? _value.bitMap
+          : bitMap // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
+      extension: freezed == extension
+          ? _value.extension
+          : extension // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -111,7 +140,9 @@ abstract class _$$_FilePropertyCopyWith<$Res>
       int? id,
       String? mimeType,
       int? dateAdded,
-      int? size});
+      int? size,
+      List<int>? bitMap,
+      String? extension});
 }
 
 /// @nodoc
@@ -131,6 +162,8 @@ class __$$_FilePropertyCopyWithImpl<$Res>
     Object? mimeType = freezed,
     Object? dateAdded = freezed,
     Object? size = freezed,
+    Object? bitMap = freezed,
+    Object? extension = freezed,
   }) {
     return _then(_$_FileProperty(
       path: freezed == path
@@ -157,6 +190,14 @@ class __$$_FilePropertyCopyWithImpl<$Res>
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as int?,
+      bitMap: freezed == bitMap
+          ? _value._bitMap
+          : bitMap // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
+      extension: freezed == extension
+          ? _value.extension
+          : extension // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -171,27 +212,58 @@ class _$_FileProperty implements _FileProperty {
       this.id,
       this.mimeType,
       this.dateAdded,
-      this.size});
+      this.size,
+      final List<int>? bitMap,
+      this.extension})
+      : _bitMap = bitMap;
 
   factory _$_FileProperty.fromJson(Map<String, dynamic> json) =>
       _$$_FilePropertyFromJson(json);
 
+  ///path to the file
   @override
   final String? path;
+
+  ///name of the file
   @override
   final String? name;
+
+  ///id of the file
   @override
   final int? id;
+
+  ///mime type of the file
   @override
   final String? mimeType;
+
+  ///added date of the file
   @override
   final int? dateAdded;
+
+  ///File size in bytes
   @override
   final int? size;
 
+  ///returns data for thumbnail in List<int> please convert to Uint8list and use with Image.fromMemory
+  final List<int>? _bitMap;
+
+  ///returns data for thumbnail in List<int> please convert to Uint8list and use with Image.fromMemory
+  @override
+  List<int>? get bitMap {
+    final value = _bitMap;
+    if (value == null) return null;
+    if (_bitMap is EqualUnmodifiableListView) return _bitMap;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  ///returns the extension of file
+  @override
+  final String? extension;
+
   @override
   String toString() {
-    return 'FileProperty(path: $path, name: $name, id: $id, mimeType: $mimeType, dateAdded: $dateAdded, size: $size)';
+    return 'FileProperty(path: $path, name: $name, id: $id, mimeType: $mimeType, dateAdded: $dateAdded, size: $size, bitMap: $bitMap, extension: $extension)';
   }
 
   @override
@@ -206,13 +278,16 @@ class _$_FileProperty implements _FileProperty {
                 other.mimeType == mimeType) &&
             (identical(other.dateAdded, dateAdded) ||
                 other.dateAdded == dateAdded) &&
-            (identical(other.size, size) || other.size == size));
+            (identical(other.size, size) || other.size == size) &&
+            const DeepCollectionEquality().equals(other._bitMap, _bitMap) &&
+            (identical(other.extension, extension) ||
+                other.extension == extension));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, path, name, id, mimeType, dateAdded, size);
+  int get hashCode => Object.hash(runtimeType, path, name, id, mimeType,
+      dateAdded, size, const DeepCollectionEquality().hash(_bitMap), extension);
 
   @JsonKey(ignore: true)
   @override
@@ -235,23 +310,45 @@ abstract class _FileProperty implements FileProperty {
       final int? id,
       final String? mimeType,
       final int? dateAdded,
-      final int? size}) = _$_FileProperty;
+      final int? size,
+      final List<int>? bitMap,
+      final String? extension}) = _$_FileProperty;
 
   factory _FileProperty.fromJson(Map<String, dynamic> json) =
       _$_FileProperty.fromJson;
 
   @override
+
+  ///path to the file
   String? get path;
   @override
+
+  ///name of the file
   String? get name;
   @override
+
+  ///id of the file
   int? get id;
   @override
+
+  ///mime type of the file
   String? get mimeType;
   @override
+
+  ///added date of the file
   int? get dateAdded;
   @override
+
+  ///File size in bytes
   int? get size;
+  @override
+
+  ///returns data for thumbnail in List<int> please convert to Uint8list and use with Image.fromMemory
+  List<int>? get bitMap;
+  @override
+
+  ///returns the extension of file
+  String? get extension;
   @override
   @JsonKey(ignore: true)
   _$$_FilePropertyCopyWith<_$_FileProperty> get copyWith =>

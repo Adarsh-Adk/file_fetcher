@@ -14,6 +14,8 @@ _$_FileProperty _$$_FilePropertyFromJson(Map<String, dynamic> json) =>
       mimeType: json['mimeType'] as String?,
       dateAdded: json['dateAdded'] as int?,
       size: json['size'] as int?,
+      bitMap: (json['bitMap'] as List<dynamic>?)?.map((e) => e as int).toList(),
+      extension: json['extension'] as String?,
     );
 
 Map<String, dynamic> _$$_FilePropertyToJson(_$_FileProperty instance) {
@@ -31,5 +33,7 @@ Map<String, dynamic> _$$_FilePropertyToJson(_$_FileProperty instance) {
   writeNotNull('mimeType', instance.mimeType);
   writeNotNull('dateAdded', instance.dateAdded);
   writeNotNull('size', instance.size);
+  writeNotNull('bitMap', instance.bitMap);
+  writeNotNull('extension', instance.extension);
   return val;
 }

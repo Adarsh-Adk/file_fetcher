@@ -10,6 +10,8 @@ _$_FileQuery _$$_FileQueryFromJson(Map<String, dynamic> json) => _$_FileQuery(
       extensions: (json['extensions'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
+      includeThumbNail: json['includeThumbNail'] as bool? ?? false,
+      thumbNailSize: json['thumbNailSize'] as int? ?? 120,
     );
 
 Map<String, dynamic> _$$_FileQueryToJson(_$_FileQuery instance) {
@@ -22,5 +24,7 @@ Map<String, dynamic> _$$_FileQueryToJson(_$_FileQuery instance) {
   }
 
   writeNotNull('extensions', instance.extensions);
+  writeNotNull('includeThumbNail', instance.includeThumbNail);
+  writeNotNull('thumbNailSize', instance.thumbNailSize);
   return val;
 }

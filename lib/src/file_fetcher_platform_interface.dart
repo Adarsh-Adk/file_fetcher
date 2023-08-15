@@ -1,6 +1,6 @@
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-import 'file_fetcher_method_channel.dart';
+import 'src/file_fetcher_method_channel.dart';
 
 abstract class FileFetcherPlatform extends PlatformInterface {
   /// Constructs a FileFetcherPlatform.

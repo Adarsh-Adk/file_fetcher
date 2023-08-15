@@ -2,7 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 
-import '../file_fetcher_platform_interface.dart';
+import 'file_fetcher_platform_interface.dart';
+import 'models/file_query.dart';
 import 'models/file_result.dart';
 
 class FileFetcher {
@@ -13,9 +14,11 @@ class FileFetcher {
     return FileFetcherPlatform.instance.getPlatformVersion();
   }
 
-  Future<FileResult> getAllImages() async {
+  ///returns list of all images
+  Future<FileResult> getAllImages({FileQuery? fileQuery}) async {
     try {
-      String result = await platform.invokeMethod('getAllImages');
+      String result = await platform.invokeMethod('getAllImages',
+          jsonEncode(fileQuery?.toJson() ?? const FileQuery().toJson()));
       FileResult fileResult = FileResult.fromJson(jsonDecode(result));
       return fileResult;
     } catch (e) {
@@ -23,9 +26,11 @@ class FileFetcher {
     }
   }
 
-  Future<FileResult> getAllAudios() async {
+  ///returns list of all audios
+  Future<FileResult> getAllAudios({FileQuery? fileQuery}) async {
     try {
-      String result = await platform.invokeMethod('getAllAudios');
+      String result = await platform.invokeMethod('getAllAudios',
+          jsonEncode(fileQuery?.toJson() ?? const FileQuery().toJson()));
       FileResult fileResult = FileResult.fromJson(jsonDecode(result));
       return fileResult;
     } catch (e) {
@@ -33,9 +38,11 @@ class FileFetcher {
     }
   }
 
-  Future<FileResult> getAllVideos() async {
+  ///returns list of all videos
+  Future<FileResult> getAllVideos({FileQuery? fileQuery}) async {
     try {
-      String result = await platform.invokeMethod('getAllVideos');
+      String result = await platform.invokeMethod('getAllVideos',
+          jsonEncode(fileQuery?.toJson() ?? const FileQuery().toJson()));
       FileResult fileResult = FileResult.fromJson(jsonDecode(result));
       return fileResult;
     } catch (e) {

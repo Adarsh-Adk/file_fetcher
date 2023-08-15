@@ -21,6 +21,8 @@ FileQuery _$FileQueryFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FileQuery {
   List<String>? get extensions => throw _privateConstructorUsedError;
+  bool? get includeThumbNail => throw _privateConstructorUsedError;
+  int? get thumbNailSize => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +35,8 @@ abstract class $FileQueryCopyWith<$Res> {
   factory $FileQueryCopyWith(FileQuery value, $Res Function(FileQuery) then) =
       _$FileQueryCopyWithImpl<$Res, FileQuery>;
   @useResult
-  $Res call({List<String>? extensions});
+  $Res call(
+      {List<String>? extensions, bool? includeThumbNail, int? thumbNailSize});
 }
 
 /// @nodoc
@@ -50,12 +53,22 @@ class _$FileQueryCopyWithImpl<$Res, $Val extends FileQuery>
   @override
   $Res call({
     Object? extensions = freezed,
+    Object? includeThumbNail = freezed,
+    Object? thumbNailSize = freezed,
   }) {
     return _then(_value.copyWith(
       extensions: freezed == extensions
           ? _value.extensions
           : extensions // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      includeThumbNail: freezed == includeThumbNail
+          ? _value.includeThumbNail
+          : includeThumbNail // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      thumbNailSize: freezed == thumbNailSize
+          ? _value.thumbNailSize
+          : thumbNailSize // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -67,7 +80,8 @@ abstract class _$$_FileQueryCopyWith<$Res> implements $FileQueryCopyWith<$Res> {
       __$$_FileQueryCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<String>? extensions});
+  $Res call(
+      {List<String>? extensions, bool? includeThumbNail, int? thumbNailSize});
 }
 
 /// @nodoc
@@ -82,12 +96,22 @@ class __$$_FileQueryCopyWithImpl<$Res>
   @override
   $Res call({
     Object? extensions = freezed,
+    Object? includeThumbNail = freezed,
+    Object? thumbNailSize = freezed,
   }) {
     return _then(_$_FileQuery(
       extensions: freezed == extensions
           ? _value._extensions
           : extensions // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      includeThumbNail: freezed == includeThumbNail
+          ? _value.includeThumbNail
+          : includeThumbNail // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      thumbNailSize: freezed == thumbNailSize
+          ? _value.thumbNailSize
+          : thumbNailSize // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -96,7 +120,10 @@ class __$$_FileQueryCopyWithImpl<$Res>
 
 @JsonSerializable(includeIfNull: false, explicitToJson: true)
 class _$_FileQuery implements _FileQuery {
-  const _$_FileQuery({final List<String>? extensions})
+  const _$_FileQuery(
+      {final List<String>? extensions,
+      this.includeThumbNail = false,
+      this.thumbNailSize = 120})
       : _extensions = extensions;
 
   factory _$_FileQuery.fromJson(Map<String, dynamic> json) =>
@@ -113,8 +140,15 @@ class _$_FileQuery implements _FileQuery {
   }
 
   @override
+  @JsonKey()
+  final bool? includeThumbNail;
+  @override
+  @JsonKey()
+  final int? thumbNailSize;
+
+  @override
   String toString() {
-    return 'FileQuery(extensions: $extensions)';
+    return 'FileQuery(extensions: $extensions, includeThumbNail: $includeThumbNail, thumbNailSize: $thumbNailSize)';
   }
 
   @override
@@ -123,13 +157,20 @@ class _$_FileQuery implements _FileQuery {
         (other.runtimeType == runtimeType &&
             other is _$_FileQuery &&
             const DeepCollectionEquality()
-                .equals(other._extensions, _extensions));
+                .equals(other._extensions, _extensions) &&
+            (identical(other.includeThumbNail, includeThumbNail) ||
+                other.includeThumbNail == includeThumbNail) &&
+            (identical(other.thumbNailSize, thumbNailSize) ||
+                other.thumbNailSize == thumbNailSize));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_extensions));
+      runtimeType,
+      const DeepCollectionEquality().hash(_extensions),
+      includeThumbNail,
+      thumbNailSize);
 
   @JsonKey(ignore: true)
   @override
@@ -146,13 +187,20 @@ class _$_FileQuery implements _FileQuery {
 }
 
 abstract class _FileQuery implements FileQuery {
-  const factory _FileQuery({final List<String>? extensions}) = _$_FileQuery;
+  const factory _FileQuery(
+      {final List<String>? extensions,
+      final bool? includeThumbNail,
+      final int? thumbNailSize}) = _$_FileQuery;
 
   factory _FileQuery.fromJson(Map<String, dynamic> json) =
       _$_FileQuery.fromJson;
 
   @override
   List<String>? get extensions;
+  @override
+  bool? get includeThumbNail;
+  @override
+  int? get thumbNailSize;
   @override
   @JsonKey(ignore: true)
   _$$_FileQueryCopyWith<_$_FileQuery> get copyWith =>
