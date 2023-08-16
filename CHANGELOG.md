@@ -1,3 +1,3 @@
-## 0.0.1
+## 0.0.1-beta.2
 
-* TODO: Describe initial release.
+* Added support for dart 3 and above.
