@@ -1,3 +1,3 @@
-## 0.0.1-beta.2
+## 0.0.1-beta.3
 
-* Added support for dart 3 and above.
+* Changed fetching data to separate thread.

@@ -21,6 +21,7 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
+import io.flutter.plugin.common.StandardMethodCodec
 import java.io.ByteArrayOutputStream
 import java.io.File
 
@@ -36,9 +37,13 @@ class FileFetcherPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     private lateinit var activity: Activity
 
     override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
+        val taskQueue =
+            flutterPluginBinding.binaryMessenger.makeBackgroundTaskQueue()
         channel = MethodChannel(
             flutterPluginBinding.binaryMessenger,
-            "com.appsbyadarsh.filefetcher/fetchfile"
+            "com.appsbyadarsh.filefetcher/fetchfile",
+            StandardMethodCodec.INSTANCE,
+            taskQueue
         )
         channel.setMethodCallHandler(this)
         context = flutterPluginBinding.applicationContext
